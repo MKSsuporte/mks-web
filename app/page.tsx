@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
-import gsap from "gsap";
 import { motion } from "framer-motion";
+import { Montserrat } from 'next/font/google'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+})
 
 export default function Hero() {
-    return (<html>
-        <section className="bg-gradient-to-b from-blue-900 to-blue-700 text-white h-screen flex items-center justify-center text-center px-6">
+    return (<section>
+        <section className="bg-gradient-to-b from-blue-700 to-blue-900 text-white h-screen flex items-center justify-center text-center px-6">
             <motion.div 
             initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -24,8 +27,8 @@ export default function Hero() {
         </motion.div>
         </section>
 
-        <section className="hero">
-            <div className="hero">
+        <section className="bg-gradient-to-b from-blue-900 to-blue-700 text-white h-screen flex items-center justify-center text-center px-6">
+            <div>
             <h2 className="text">Tradição e Tecnologia</h2>
             <p>
                 Com mais de três décadas de atuação, desenvolvemos sistemas robustos em Delphi,
@@ -42,19 +45,19 @@ export default function Hero() {
                 <p>Emissão e gerenciamento completo de Nota Fiscal Eletrônica.</p>
             </div>
             <div className="card">
-                <h3>NFC-e</h3>
+                <h3 className="bolder">NFC-e</h3>
                 <p>Solução ágil para o varejo e emissão de cupom fiscal eletrônico.</p>
             </div>
             <div className="card">
-                <h3>CT-e & MDF-e</h3>
+                <h3 className="bolder">CT-e & MDF-e</h3>
                 <p>Gestão completa para transportadoras e logística.</p>
             </div>
             <div className="card">
-                <h3>SPED Fiscal</h3>
+                <h3 className="bolder">SPED Fiscal</h3>
                 <p>Conformidade e integração com obrigações acessórias.</p>
             </div>
         </div>
 </section>
-        </html>
+        </section>
     );
 }

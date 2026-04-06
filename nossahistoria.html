@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa História – MarkSystte MKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="service-icon" href="favicon.ico">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue-deep:   #0d2a4a;
+    --blue-mid:    #1a5f9e;
+    --blue-light:  #4aa3d4;
+    --blue-pale:   #c8e8f8;
+    --blue-ghost:  #eaf5fc;
+    --silver:      #c8d4de;
+    --silver-dark: #8fa3b4;
+    --white:       #ffffff;
+    --text-dark:   #0d1f2d;
+    --text-mid:    #3a5068;
+    --text-light:  #7a99b0;
+    --accent:      #2a9fd6;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; background: rgba(255,255,255,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(74,163,212,0.15); transition: box-shadow .3s; }
+  nav.scrolled { box-shadow: 0 4px 30px rgba(13,42,74,.08); }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo img { height: 44px; width: auto; }
+  .nav-logo-text span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: var(--blue-deep); letter-spacing: .04em; display: block; }
+  .nav-logo-text span:last-child { font-size: .65rem; font-weight: 500; color: var(--blue-light); letter-spacing: .2em; text-transform: uppercase; }
+  .nav-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--blue-mid); font-size: .875rem; font-weight: 600; padding: 9px 20px; border-radius: 7px; border: 1.5px solid rgba(26,95,158,.25); transition: all .25s; }
+  .nav-back:hover { background: var(--blue-mid); color: var(--white); border-color: var(--blue-mid); }
+
+  /* HERO */
+  .hist-hero {
+    min-height: 60vh; padding-top: 72px;
+    background: linear-gradient(160deg, var(--blue-deep) 0%, #0f3a6e 60%, #1a5f9e 100%);
+    display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .hist-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234aa3d4' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40v-2h-2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hist-hero-inner { max-width: 1100px; margin: 0 auto; padding: 80px 5%; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+  .hist-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(74,163,212,.15); border: 1px solid rgba(74,163,212,.35); color: var(--blue-pale); font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
+  .hist-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; color: var(--white); line-height: 1.08; }
+  .hist-hero-title em { font-style: italic; color: var(--blue-pale); }
+  .hist-hero-sub { margin-top: 20px; font-size: 1.05rem; color: rgba(200,232,248,.75); line-height: 1.75; max-width: 520px; }
+  .hist-hero-logo { opacity: 1; }
+  .hist-hero-logo img { width: 180px; filter: brightness(1); }
+  @media (max-width: 768px) { .hist-hero-inner { grid-template-columns: 1fr; } .hist-hero-logo { display: block; } }
+
+  /* INTRO */
+  .hist-intro { padding: 100px 5%; background: var(--white); }
+  .hist-intro-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+  .hist-intro-inner p { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 400; font-style: italic; color: var(--blue-deep); line-height: 1.6; }
+  .hist-intro-inner p strong { font-style: normal; font-weight: 700; color: var(--blue-mid); }
+  .hist-intro-divider { margin: 40px auto; width: 60px; height: 2px; background: linear-gradient(90deg, var(--blue-light), var(--accent)); }
+
+  /* TIMELINE */
+  .timeline-section { padding: 80px 5% 100px; background: linear-gradient(180deg, #f8fdff 0%, var(--white) 100%); }
+  .timeline-section > div { max-width: 1000px; margin: 0 auto; }
+  .tl-header { text-align: center; margin-bottom: 80px; }
+  .tl-label { display: inline-flex; align-items: center; gap: 10px; color: var(--blue-mid); font-size: .72rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 14px; }
+  .tl-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--blue-deep); }
+
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+    top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, var(--blue-light), var(--accent), var(--blue-mid));
+  }
+
+  .tl-item {
+    display: grid; grid-template-columns: 1fr 60px 1fr;
+    gap: 0; margin-bottom: 64px; align-items: start;
+  }
+
+  .tl-content {
+    background: var(--white); border: 1px solid rgba(74,163,212,.15);
+    border-radius: 14px; padding: 28px 32px;
+    box-shadow: 0 4px 24px rgba(13,42,74,.06);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .tl-content:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(13,42,74,.1); }
+
+  .tl-item:nth-child(odd) .tl-content { grid-column: 1; }
+  .tl-item:nth-child(odd) .tl-spacer { grid-column: 2; }
+  .tl-item:nth-child(odd) .tl-empty { grid-column: 3; }
+
+  .tl-item:nth-child(even) .tl-content { grid-column: 3; order: 3; }
+  .tl-item:nth-child(even) .tl-spacer { grid-column: 2; order: 2; }
+  .tl-item:nth-child(even) .tl-empty { grid-column: 1; order: 1; }
+
+  .tl-spacer {
+    display: flex; flex-direction: column; align-items: center; padding-top: 28px;
+  }
+  .tl-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-mid), var(--accent));
+    box-shadow: 0 0 0 5px rgba(74,163,212,.2), 0 0 0 9px rgba(74,163,212,.08);
+    flex-shrink: 0; z-index: 1;
+  }
+
+  .tl-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 700; color: var(--blue-mid);
+    letter-spacing: .08em; margin-top: 8px; text-align: center;
+    white-space: nowrap;
+  }
+
+  .tl-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(74,163,212,.1); color: var(--blue-mid);
+    font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 12px; margin-bottom: 12px;
+  }
+  .tl-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--blue-deep); margin-bottom: 10px; line-height: 1.25; }
+  .tl-content p { font-size: .875rem; color: var(--text-mid); line-height: 1.75; }
+
+  @media (max-width: 720px) {
+    .timeline::before { left: 20px; }
+    .tl-item { grid-template-columns: 40px 1fr; grid-template-rows: auto; margin-bottom: 40px; }
+    .tl-item:nth-child(odd) .tl-content,
+    .tl-item:nth-child(even) .tl-content { grid-column: 2; order: 2; }
+    .tl-item:nth-child(odd) .tl-spacer,
+    .tl-item:nth-child(even) .tl-spacer { grid-column: 1; order: 1; }
+    .tl-item:nth-child(odd) .tl-empty,
+    .tl-item:nth-child(even) .tl-empty { display: none; }
+    .tl-year { font-size: .75rem; }
+  }
+
+  /* VALUES */
+  .values-section { padding: 100px 5%; background: var(--blue-deep); position: relative; overflow: hidden; }
+  .values-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(74,163,212,.08) 0%, transparent 70%); }
+  .values-inner { max-width: 1100px; margin: 0 auto; }
+  .v-header { text-align: center; margin-bottom: 60px; }
+  .v-label { color: var(--blue-light); font-size: .72rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 14px; }
+  .v-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); }
+  .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .value-card { background: rgba(255,255,255,.04); border: 1px solid rgba(74,163,212,.15); border-radius: 14px; padding: 32px 28px; text-align: center; transition: background .3s, transform .3s; }
+  .value-card:hover { background: rgba(74,163,212,.08); transform: translateY(-4px); }
+  .value-icon { font-size: 2rem; color: var(--blue-light); margin-bottom: 16px; }
+  .value-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .value-card p { font-size: .825rem; color: var(--silver-dark); line-height: 1.7; }
+
+  /* FOUNDERS */
+  .founders-section { padding: 100px 5%; background: var(--white); }
+  .founders-inner { max-width: 1100px; margin: 0 auto; }
+  .f-header { margin-bottom: 60px; }
+  .founders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+  .founder-card { background: var(--blue-ghost); border: 1px solid rgba(74,163,212,.15); border-radius: 16px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .3s, transform .3s; }
+  .founder-card:hover { box-shadow: 0 16px 48px rgba(13,42,74,.1); transform: translateY(-4px); }
+  .founder-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-mid), var(--accent)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--white); box-shadow: 0 6px 20px rgba(26,95,158,.25); flex-shrink: 0; }
+  .founder-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: var(--blue-deep); }
+  .founder-role { font-size: .78rem; color: var(--blue-mid); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+  .founder-bio { font-size: .875rem; color: var(--text-mid); line-height: 1.75; }
+  .founder-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--blue-mid); border-left: 3px solid var(--blue-light); padding-left: 16px; margin-top: 4px; }
+
+  /* NUMBERS */
+  .numbers-section { padding: 80px 5%; background: linear-gradient(135deg, #eaf5fc 0%, #d4ecf7 100%); }
+  .numbers-inner { max-width: 1000px; margin: 0 auto; }
+  .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+  .num-item { }
+  .num-val { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--blue-mid); line-height: 1; }
+  .num-label { font-size: .8rem; color: var(--text-mid); letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; }
+  @media (max-width: 600px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* CTA */
+  .hist-cta { padding: 80px 5%; background: var(--blue-deep); text-align: center; }
+  .hist-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); margin-bottom: 16px; }
+  .hist-cta p { color: var(--blue-pale); font-size: .95rem; margin-bottom: 32px; }
+  .hist-cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .btn-hist-main { background: var(--accent); color: var(--white); padding: 14px 32px; border-radius: 8px; font-size: .95rem; font-weight: 600; border: none; cursor: pointer; box-shadow: 0 8px 28px rgba(42,159,214,.4); transition: all .25s; text-decoration: none; display: inline-block; }
+  .btn-hist-main:hover { background: #55b8ea; transform: translateY(-2px); }
+  .btn-hist-ghost { background: transparent; color: var(--blue-pale); padding: 13px 28px; border-radius: 8px; font-size: .95rem; font-weight: 500; border: 1.5px solid rgba(200,232,248,.3); cursor: pointer; transition: all .25s; text-decoration: none; display: inline-block; }
+  .btn-hist-ghost:hover { border-color: var(--blue-light); color: var(--white); background: rgba(74,163,212,.1); }
+
+  /* FOOTER */
+  footer { background: #08192e; padding: 40px 5% 24px; }
+  .foot-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(74,163,212,.1); padding-top: 24px; }
+  .foot-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .foot-logo img { height: 36px; }
+  .foot-logo span { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .foot-copy { font-size: .775rem; color: var(--silver-dark); }
+  .foot-copy strong { color: var(--blue-light); }
+
+  /* WA */
+  .wa-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; text-decoration: none; box-shadow: 0 6px 24px rgba(37,211,102,.4); animation: waPulse 2.5s ease-in-out infinite; transition: transform .25s; }
+  .wa-btn:hover { transform: scale(1.1); animation: none; }
+
+  /* ANIMATIONS */
+  @keyframes waPulse { 0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,.4); } 50% { box-shadow: 0 6px 38px rgba(37,211,102,.65); } }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* counters */
+  .count-up { display: inline-block; }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="marksystte.html" class="nav-logo">
+    <img src="LogoMKS.png" alt="Logo da MKS">
+    <div class="nav-logo-text">
+      <span>MarkSystte</span>
+      <span>MKS · Automação</span>
+    </div>
+  </a>
+  <a href="marksystte.html" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Voltar ao Site</a>
+</nav>
+
+<!-- HERO -->
+<section class="hist-hero">
+  <div class="hist-hero-inner">
+    <div>
+      <div class="hist-hero-badge"><i class="fa-solid fa-clock-rotate-left"></i> Fundada em 1994</div>
+      <h1 class="hist-hero-title">Uma história de<br><em>inovação e confiança</em><br>por três décadas</h1>
+      <p class="hist-hero-sub">Da visão pioneira de seus fundadores à referência nacional em automação empresarial — conheça a trajetória da MarkSystte.</p>
+    </div>
+    <div class="hist-hero-logo">
+        <img src="LogoMKS.png" alt="Logo da MKS">
+    </div>
+  </div>
+</section>
+
+<!-- INTRO QUOTE -->
+<section class="hist-intro">
+  <div class="hist-intro-inner reveal">
+    <p>
+      "Acreditamos que <strong>tecnologia bem aplicada</strong> transforma não apenas processos, mas pessoas e culturas. Por mais de 30 anos, essa convicção guiou cada linha de código que escrevemos, cada sistema que entregamos e cada cliente que acompanhamos em sua jornada."
+    </p>
+    <div class="hist-intro-divider"></div>
+    <p style="font-family:'DM Sans',sans-serif; font-style:normal; font-size:.9rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase;">— Fundadores da MarkSystte, 1994</p>
+  </div>
+</section>
+
+<!-- NUMBERS STRIP -->
+<section class="numbers-section">
+  <div class="numbers-inner">
+    <div class="numbers-grid reveal">
+      <div class="num-item"><div class="num-val"><span class="count-up" data-target="30">0</span>+</div><div class="num-label">Anos de mercado</div></div>
+      <div class="num-item"><div class="num-val"><span class="count-up" data-target="1200">0</span>+</div><div class="num-label">Empresas atendidas</div></div>
+      <div class="num-item"><div class="num-val"><span class="count-up" data-target="48">0</span></div><div class="num-label">Colaboradores</div></div>
+      <div class="num-item"><div class="num-val"><span class="count-up" data-target="98">0</span>%</div><div class="num-label">Índice de satisfação</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div>
+    <div class="tl-header reveal">
+      <div class="tl-label"><i class="fa-solid fa-timeline"></i> Nossa Trajetória</div>
+      <h2 class="tl-title">30 anos escrevendo história</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-flag"></i> Fundação</div>
+          <h3>Nasce a MarkSystte</h3>
+          <p>Em 1994, dois desenvolvedores visionários fundaram a MarkSystte em São Paulo com uma missão clara: tornar a tecnologia acessível e eficiente para empresas brasileiras de todos os portes. O primeiro escritório tinha apenas três computadores e uma ideia que mudaria o mercado.</p>
+        </div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">1994</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">1997</div></div>
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-code"></i> Produto</div>
+          <h3>Lançamento do MKS Manager</h3>
+          <p>Após três anos de desenvolvimento intenso, lançamos o MKS Manager — nosso primeiro sistema de gestão empresarial integrado. Em menos de um ano, mais de 80 empresas paulistanas já utilizavam a plataforma para controlar estoque, vendas e finanças.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-trophy"></i> Reconhecimento</div>
+          <h3>Prêmio de Inovação Tecnológica</h3>
+          <p>A MarkSystte recebeu o Prêmio de Inovação em Software Empresarial da ABES (Associação Brasileira das Empresas de Software), consolidando nossa reputação como referência em soluções de gestão para o mercado brasileiro.</p>
+        </div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2001</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2005</div></div>
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-map"></i> Expansão</div>
+          <h3>Expansão Nacional</h3>
+          <p>Abrimos escritórios no Rio de Janeiro, Belo Horizonte e Porto Alegre. Com mais de 300 clientes ativos, a MKS se tornava um nome nacional. Neste mesmo ano, lançamos a versão web do MKS Manager, pioneiro no segmento SaaS no Brasil.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-mobile-screen"></i> Tecnologia</div>
+          <h3>Era Mobile e Cloud</h3>
+          <p>Com a explosão dos smartphones, fomos uma das primeiras empresas de ERP do Brasil a lançar aplicativo móvel completo. Simultaneamente, migramos toda a infraestrutura para cloud, garantindo disponibilidade 99.9% e escalabilidade sem precedentes para nossos clientes.</p>
+        </div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2011</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2015</div></div>
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-users"></i> Marco</div>
+          <h3>500 Clientes Ativos</h3>
+          <p>Celebramos a marca de 500 empresas atendidas simultaneamente — do pequeno varejista ao grande distribuidor nacional. Lançamos o programa MKS Partners, unindo integradores e revendedores em todo o território nacional, multiplicando nosso alcance.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-brain"></i> Inovação</div>
+          <h3>Inteligência Artificial &amp; Automação Avançada</h3>
+          <p>Incorporamos módulos de IA à plataforma MKS: previsão de demanda, análise preditiva de estoque e automação de fluxos de aprovação. Empresas clientes reportaram reduções de até 60% no tempo de processos administrativos.</p>
+        </div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2019</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-empty"></div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2022</div></div>
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-shield-halved"></i> Compliance</div>
+          <h3>Certificação LGPD e ISO 27001</h3>
+          <p>Em resposta às novas exigências do mercado, obtivemos as certificações ISO 27001 (segurança da informação) e nos tornamos referência em compliance com a LGPD. Nossos clientes ganharam total tranquilidade na proteção dos seus dados e dos seus clientes.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-content">
+          <div class="tl-tag"><i class="fa-solid fa-rocket"></i> Presente</div>
+          <h3>MarkSystte Hoje: +1.200 Empresas</h3>
+          <p>Em 2024, completamos 30 anos com mais de 1.200 empresas ativas em todo o Brasil. Continuamos inovando com soluções de automação de última geração, integrações via API com os principais players do mercado e suporte dedicado que nos diferencia. O futuro é ainda mais promissor.</p>
+        </div>
+        <div class="tl-spacer"><div class="tl-dot"></div><div class="tl-year">2024</div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="v-header reveal">
+      <div class="v-label"><i class="fa-solid fa-star" style="margin-right:8px"></i>Nossos Valores</div>
+      <h2 class="v-title">O que nos move há 30 anos</h2>
+    </div>
+    <div class="values-grid reveal">
+      <div class="value-card"><div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div><h3>Inovação Contínua</h3><p>Nunca paramos de evoluir. Cada versão do nosso software nasce da escuta ativa dos clientes e da antecipação das tendências de mercado.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="fa-solid fa-handshake"></i></div><h3>Parceria de Verdade</h3><p>Não somos apenas fornecedores. Somos parceiros estratégicos que crescem junto com cada empresa que atendemos, celebrando cada vitória.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="fa-solid fa-lock"></i></div><h3>Confiança &amp; Segurança</h3><p>Mais de 30 anos de dados protegidos, sistemas estáveis e compromissos cumpridos. A confiança dos nossos clientes é o nosso maior patrimônio.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="fa-solid fa-heart"></i></div><h3>Pessoas em Primeiro Lugar</h3><p>Tecnologia existe para servir pessoas. Cada funcionalidade que desenvolvemos tem como objetivo final facilitar a vida de quem usa nossos sistemas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders-section">
+  <div class="founders-inner">
+    <div class="f-header reveal">
+      <div class="section-label" style="display:flex;align-items:center;gap:10px;color:var(--blue-mid);font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;"><span style="width:28px;height:1.5px;background:var(--blue-mid);display:block"></span>Quem nos fundou</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--blue-deep)">As pessoas por trás<br>da MarkSystte</h2>
+    </div>
+    <div class="founders-grid reveal">
+      <div class="founder-card">
+        <div class="founder-avatar">MA</div>
+        <div>
+          <div class="founder-name">Marcos Antunes</div>
+          <div class="founder-role">Co-fundador &amp; CEO</div>
+        </div>
+        <p class="founder-bio">Engenheiro de computação formado pela USP, Marcos idealizou a MarkSystte após perceber que pequenas e médias empresas brasileiras careciam de ferramentas de gestão acessíveis e robustas. Com mais de 35 anos de experiência em TI empresarial, lidera a visão estratégica da companhia.</p>
+        <p class="founder-quote">"Tecnologia que não simplifica a vida, não serve."</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">RS</div>
+        <div>
+          <div class="founder-name">Ricardo Siqueira</div>
+          <div class="founder-role">Co-fundador &amp; CTO</div>
+        </div>
+        <p class="founder-bio">Matemático e autodidata em programação, Ricardo escreveu as primeiras linhas de código do MKS Manager em 1995. Seu perfeccionismo técnico e obsessão por performance moldaram a cultura de excelência em engenharia que perdura até hoje em cada produto da empresa.</p>
+        <p class="founder-quote">"Código bom é aquele que o usuário nunca precisa pensar sobre."</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">PT</div>
+        <div>
+          <div class="founder-name">Paula Tavares</div>
+          <div class="founder-role">Diretora de Operações</div>
+        </div>
+        <p class="founder-bio">Terceiro pilar da MarkSystte desde 1998, Paula transformou um time de três pessoas em uma operação de 48 colaboradores especializados. Sua liderança centrada nas pessoas criou a cultura de suporte ao cliente que nos diferencia no mercado e mantém nosso índice de retenção acima de 95%.</p>
+        <p class="founder-quote">"Cliente satisfeito é o melhor contrato que existe."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="hist-cta">
+  <div style="max-width:680px;margin:0 auto" class="reveal">
+    <h2>Faça parte desta história</h2>
+    <p>30 anos de experiência a serviço do seu negócio. Vamos construir juntos o próximo capítulo.</p>
+    <div class="hist-cta-btns">
+      <a href="marksystte.html#contratar" class="btn-hist-main" onclick="setTimeout(()=>window.opener&&window.opener.contratarServico&&window.opener.contratarServico(),200)"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Contratar MarkSystte</a>
+      <a href="marksystte.html#contato" class="btn-hist-ghost"><i class="fa-solid fa-comment-dots" style="margin-right:8px"></i>Falar com a equipe</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <a href="marksystte.html" class="foot-logo">
+        <img src="LogoMKS.png" alt="Logo da MKS">
+      <span>MarkSystte</span>
+    </a>
+    <p class="foot-copy">© 2025 <strong>MarkSystte (MKS)</strong> · <strong>+30 anos</strong> automatizando o Brasil</p>
+  </div>
+</footer>
+
+<a class="wa-btn" href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte" target="_blank" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20));
+
+// Reveal
+const revEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
+revEls.forEach(el => obs.observe(el));
+
+// Count-up animation
+function animateCount(el, target, duration = 1800) {
+  let start = 0;
+  const step = Math.ceil(target / (duration / 16));
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = start.toLocaleString('pt-BR');
+    if (start >= target) clearInterval(timer);
+  }, 16);
+}
+
+const numObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.count-up').forEach(el => {
+        animateCount(el, parseInt(el.dataset.target));
+      });
+      numObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.numbers-grid').forEach(el => numObs.observe(el));
+</script>
+</body>
+</html>

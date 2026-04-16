@@ -202,6 +202,117 @@
 
   /* counters */
   .count-up { display: inline-block; }
+
+  /* ── FOUNDER VIDEOS ──────────────────── */
+  .videos-section {
+    padding: 0 5% 100px;
+    background: var(--white);
+  }
+  .videos-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+  .videos-header {
+    text-align: center; margin-bottom: 48px;
+  }
+  .videos-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--blue-mid); font-size: .72rem; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .videos-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; color: var(--blue-deep); line-height: 1.2;
+  }
+  .videos-sub {
+    margin-top: 10px; font-size: .9rem;
+    color: var(--text-light); max-width: 480px; margin-inline: auto; line-height: 1.6;
+  }
+
+  .videos-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+
+  .video-card {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(74,163,212,.18);
+    background: var(--blue-ghost);
+    box-shadow: 0 8px 36px rgba(13,42,74,.08);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 56px rgba(13,42,74,.13);
+  }
+
+  /* Widescreen 16:9 wrapper */
+  .video-embed {
+    position: relative; width: 100%; padding-top: 56.25%;
+    background: #08192e;
+    overflow: hidden;
+  }
+  .video-embed iframe,
+  .video-embed video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none; display: block;
+  }
+
+  /* Placeholder shown when src is empty */
+  .video-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+    background: linear-gradient(160deg, #0d2a4a 0%, #0f3a6e 100%);
+    cursor: default;
+  }
+  .video-placeholder-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(74,163,212,.15);
+    border: 1.5px solid rgba(74,163,212,.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blue-light); font-size: 1.6rem;
+  }
+  .video-placeholder span {
+    font-size: .8rem; color: rgba(200,232,248,.5);
+    letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+  }
+
+  .video-info {
+    padding: 22px 24px 26px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .video-avatar {
+    width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--blue-mid), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--white);
+    box-shadow: 0 4px 14px rgba(26,95,158,.2);
+  }
+  .video-info-text strong {
+    display: block; font-size: .9rem; font-weight: 600;
+    color: var(--blue-deep);
+  }
+  .video-info-text span {
+    font-size: .75rem; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: .08em;
+  }
+  .video-duration {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 5px;
+    font-size: .72rem; color: var(--text-light);
+    background: rgba(74,163,212,.08);
+    border: 1px solid rgba(74,163,212,.15);
+    padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .video-duration i { font-size: .7rem; color: var(--blue-light); }
+
+  @media (max-width: 700px) {
+    .videos-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -400,6 +511,73 @@
         <p class="founder-bio">Co-fundadora e pilar estratégico da empresa, Heloisa ao lado de Marcos Sá impulsionou a construção do MKS desde 1988, fortalecendo a base do negócio e cultivando relações de confiança. Sua dedicação e visão colaborativa ajudaram a consolidar uma cultura sólida e humana, presente até hoje em cada etapa da trajetória da organização.</p>
         <p class="founder-quote">"Uma empresa forte é aquela que cresce sem perder o cuidado com as pessoas que a constroem todos os dias."</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER VIDEOS -->
+<section class="videos-section">
+  <div class="videos-inner">
+    <div class="videos-header reveal">
+      <div class="videos-label"><i class="fa-solid fa-circle-play"></i> Depoimentos em Vídeo</div>
+      <h2 class="videos-title">Ouça diretamente<br>dos fundadores</h2>
+      <p class="videos-sub">Marcos e Heloisa contam em primeira pessoa a história, os desafios e a visão que fizeram a MarkSystte se tornar o que é hoje.</p>
+    </div>
+
+    <div class="videos-grid reveal">
+
+      <!-- Vídeo 1 — Marcos Antonio Sá -->
+      <div class="video-card">
+        <div class="video-embed">
+          <!--
+            COMO ADICIONAR O VÍDEO DO MARCOS:
+            Opção A – YouTube/Vimeo: substitua o bloco abaixo por:
+              <iframe src="https://www.youtube.com/embed/SEU_ID_AQUI" allowfullscreen></iframe>
+            Opção B – Arquivo local (.mp4):
+              <video src="video-marcos.mp4" controls poster="thumb-marcos.jpg"></video>
+            Depois de inserir, apague o <div class="video-placeholder"> inteiro.
+          -->
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon"><i class="fa-solid fa-play"></i></div>
+            <span>Vídeo do Marcos — em breve</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-avatar">MA</div>
+          <div class="video-info-text">
+            <strong>Marcos Antonio Sá</strong>
+            <span>Fundador &amp; CEO · A origem da MarkSystte</span>
+          </div>
+          <div class="video-duration"><i class="fa-regular fa-clock"></i> — : —</div>
+        </div>
+      </div>
+
+      <!-- Vídeo 2 — Heloisa Sá -->
+      <div class="video-card">
+        <div class="video-embed">
+          <!--
+            COMO ADICIONAR O VÍDEO DA HELOISA:
+            Opção A – YouTube/Vimeo: substitua o bloco abaixo por:
+              <iframe src="https://www.youtube.com/embed/SEU_ID_AQUI" allowfullscreen></iframe>
+            Opção B – Arquivo local (.mp4):
+              <video src="video-heloisa.mp4" controls poster="thumb-heloisa.jpg"></video>
+            Depois de inserir, apague o <div class="video-placeholder"> inteiro.
+          -->
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon"><i class="fa-solid fa-play"></i></div>
+            <span>Vídeo da Heloisa — em breve</span>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-avatar">HS</div>
+          <div class="video-info-text">
+            <strong>Heloisa Sá</strong>
+            <span>Co-Fundadora &amp; CFO · 30 anos de parceria</span>
+          </div>
+          <div class="video-duration"><i class="fa-regular fa-clock"></i> — : —</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

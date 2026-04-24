@@ -961,7 +961,7 @@
         A MarkSystte é referência em automação empresarial há mais de três décadas. Desenvolvemos sistemas robustos, integrados e escaláveis para empresas que querem crescer com eficiência e segurança.
       </p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="contratarServico()"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Contratar Agora</button>
+        <button class="btn-primary" onclick="chamarWhatsapp()"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Contratar Agora</button>
         <a href="#clientes" class="btn-outline">Ver Clientes</a>
       </div>
       <div class="hero-stats">
@@ -1073,28 +1073,36 @@
   <div class="sistema-header reveal">
     <div>
       <div class="section-label">O Sistema</div>
-      <h2 class="section-title">Veja o MKS<br>em ação</h2>
+      <h2 class="section-title">Veja a MKS<br>em ação</h2>
       <p class="section-sub">Uma interface moderna, intuitiva e pensada para o dia a dia da sua empresa. Confira alguns módulos do sistema.</p>
       <div class="sistema-features">
         <div class="sistema-feature">
           <div class="sistema-feature-icon"><i class="fa-solid fa-display"></i></div>
           <div class="sistema-feature-text">
             <strong>Interface intuitiva</strong>
-            <span>Design limpo e fluxos otimizados para máxima produtividade da equipe.</span>
+            <span>Design focado em usabilidade e navegabilidade.</span>
           </div>
         </div>
         <div class="sistema-feature">
           <div class="sistema-feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
           <div class="sistema-feature-text">
             <strong>Acesso multiplataforma</strong>
-            <span>Acesse do computador, tablet ou celular com total sincronização em tempo real.</span>
+            <span>Acesse do computador, tablet ou celular, onde e quando quiser.</span>
           </div>
         </div>
         <div class="sistema-feature">
           <div class="sistema-feature-icon"><i class="fa-solid fa-sliders"></i></div>
           <div class="sistema-feature-text">
             <strong>Totalmente personalizável</strong>
-            <span>Módulos configuráveis que se adaptam ao fluxo único de cada empresa.</span>
+            <span>Personalizamos cada módulo com a cara do seu negócio.</span>
+          </div>
+        </div>
+      </div>
+       <div class="sistema-feature">
+          <div class="sistema-feature-icon"><i class="fa-solid fa-sliders"></i></div>
+          <div class="sistema-feature-text">
+            <strong>Rápido e seguro</strong>
+            <span>Personalizamos cada módulo com a cara do seu negócio.</span>
           </div>
         </div>
       </div>
@@ -1190,7 +1198,7 @@
     <div class="reveal">
       <div class="section-label">Área do Cliente</div>
       <h2 class="section-title">Empresas que confiam<br>na MarkSystte</h2>
-      <p class="section-sub">Mais de 1.200 empresas em todo o Brasil já transformaram suas operações com nossas soluções.</p>
+      <p class="section-sub">Mais de 1.400 empresas já transformaram suas operações com nossas soluções.</p>
     </div>
 
     <div class="carousel-wrapper reveal">
@@ -1332,10 +1340,10 @@
     <div class="cta-label"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Comece sua transformação</div>
     <h2 class="cta-title">Pronto para automatizar<br>seu negócio?</h2>
     <p class="cta-desc">
-      Junte-se a mais de 1.200 empresas que confiam na MarkSystte. Solicite uma demonstração gratuita e veja na prática como podemos transformar sua operação.
+      Junte-se a mais de 1.400 empresas que confiam na MarkSystte. Solicite uma demonstração gratuita e veja na prática como podemos transformar sua operação.
     </p>
     <div class="cta-btns">
-      <button class="btn-cta-main" onclick="contratarServico()"><i class="fa-solid fa-paper-plane" style="margin-right:10px"></i>Contratar MarkSystte</button>
+      <button class="btn-cta-main" onclick="chamarWhatsapp()"><i class="fa-solid fa-paper-plane" style="margin-right:10px"></i>Contratar MarkSystte</button>
       <button class="btn-cta-ghost" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-comment-dots" style="margin-right:8px"></i>Falar com especialista</button>
     </div>
   </div>
@@ -1421,7 +1429,7 @@
             <label>Mensagem</label>
             <textarea placeholder="Descreva brevemente sua necessidade..."></textarea>
           </div>
-          <button class="btn-form" onclick="contratarServico()"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Enviar Mensagem</button>
+          <button class="btn-form" onclick="chamarWhatsapp()"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Enviar Mensagem</button>
         </form>
       </div>
     </div>
@@ -1598,6 +1606,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') lightboxNav(1);
 });
 
+function chamarWhatsapp() {
+  // href="https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte" class=""
+  window.open("https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte");
+  contratarServico();
+}
+
 function contratarServico() {
   const overlay = document.createElement('div');
   overlay.style.cssText = `
@@ -1615,8 +1629,8 @@ function contratarServico() {
       <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1a5f9e,#4aa3d4);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 28px rgba(26,95,158,.35);">
         <i class="fa-solid fa-check" style="color:#fff;font-size:1.5rem"></i>
       </div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#0d2a4a;font-weight:700;margin-bottom:10px">Solicitação Enviada!</h3>
-      <p style="color:#3a5068;font-size:.9rem;line-height:1.7;margin-bottom:28px">Obrigado pelo interesse na MarkSystte! Nossa equipe comercial entrará em contato em até <strong>2 horas</strong>.</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#0d2a4a;font-weight:700;margin-bottom:10px">Obrigado!</h3>
+      <p style="color:#3a5068;font-size:.9rem;line-height:1.7;margin-bottom:28px">Obrigado pelo interesse na MarkSystte! Nossa equipe comercial responderá sua mensagem em até <strong>2 horas</strong>.</p>
       <button onclick="this.closest('div[style*=fixed]').remove()" style="background:#1a5f9e;color:#fff;border:none;padding:12px 32px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;box-shadow:0 6px 20px rgba(26,95,158,.3);">Fechar</button>
     </div>
   `;

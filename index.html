@@ -930,6 +930,456 @@
     .gallery-grid { grid-template-columns: 1fr; }
     .gallery-item:first-child { grid-column: span 1; }
   }
+
+  /* ═══════════════════════════════════════════
+     NOSSOS SERVIÇOS – CAROUSEL DE CARDS 3D
+  ═══════════════════════════════════════════ */
+  #nossos-servicos {
+    padding: 110px 5%;
+    background: linear-gradient(170deg, #0a1f38 0%, #0f3460 55%, #0a1f38 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  #nossos-servicos::before {
+    content: '';
+    position: absolute; top: -250px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,163,212,.07) 0%, transparent 68%);
+    pointer-events: none;
+  }
+  .sc-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .sc-header .section-label {
+    justify-content: center;
+    color: var(--blue-light);
+  }
+  .sc-header .section-label::before { background: var(--blue-light); }
+  .sc-header .section-title { color: #fff; }
+  .sc-header .section-sub {
+    color: var(--blue-pale);
+    margin: 12px auto 0;
+    text-align: center;
+  }
+
+  /* ── viewport esconde o overflow ── */
+  .sc-viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  /* ── track deslizante ── */
+  .sc-track {
+    display: flex;
+    gap: 24px;
+    transition: transform .55s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ── cada card: 1/3 da área menos os 2 gaps ── */
+  .sc-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    min-width: 0;
+    perspective: 900px;
+    cursor: pointer;
+  }
+
+  /* ── invólucro com flip 3D ── */
+  .sc-card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 128%;
+    transform-style: preserve-3d;
+    transition: transform .65s cubic-bezier(.4,0,.2,1);
+    border-radius: 18px;
+  }
+  .sc-card:hover .sc-card-inner,
+  .sc-card.flipped .sc-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* ── frente e verso ── */
+  .sc-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sc-front {
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(74,163,212,.22);
+    justify-content: space-between;
+  }
+  .sc-back {
+    background: linear-gradient(145deg, #1a5f9e, #2a9fd6);
+    border: 1px solid rgba(74,163,212,.4);
+    transform: rotateY(180deg);
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .sc-icon {
+    width: 52px; height: 52px;
+    border-radius: 13px;
+    background: rgba(74,163,212,.18);
+    border: 1px solid rgba(74,163,212,.28);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: var(--blue-light);
+    margin-bottom: 16px;
+  }
+  .sc-front h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem; font-weight: 700; color: #fff;
+    line-height: 1.3; margin-bottom: 10px;
+  }
+  .sc-front p {
+    font-size: .81rem; color: rgba(200,232,248,.62);
+    line-height: 1.65; flex: 1; margin-bottom: 16px;
+  }
+  .sc-hint {
+    font-size: .67rem; color: rgba(74,163,212,.65);
+    letter-spacing: .12em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  .sc-back h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem; font-weight: 700; color: #fff;
+  }
+  .sc-back ul {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sc-back ul li {
+    font-size: .79rem; color: rgba(255,255,255,.9);
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
+  }
+  .sc-back ul li i {
+    font-size: .7rem; color: rgba(255,255,255,.65);
+    margin-top: 3px; flex-shrink: 0;
+  }
+  .sc-cta-btn {
+    margin-top: 6px;
+    background: rgba(255,255,255,.16);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.28);
+    padding: 8px 16px; border-radius: 8px;
+    font-size: .76rem; font-weight: 600; letter-spacing: .05em;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background .2s;
+    align-self: flex-start;
+  }
+  .sc-cta-btn:hover { background: rgba(255,255,255,.28); }
+
+  /* ── controles ── */
+  .sc-controls {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin-top: 44px;
+  }
+  .sc-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(74,163,212,.25);
+    color: var(--blue-light); font-size: .88rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .22s;
+  }
+  .sc-btn:hover:not(:disabled) {
+    background: var(--blue-mid); color: #fff;
+    border-color: var(--blue-mid);
+  }
+  .sc-btn:disabled { opacity: .3; cursor: not-allowed; }
+  .sc-dots { display: flex; gap: 8px; }
+  .sc-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(74,163,212,.3);
+    border: none; cursor: pointer;
+    transition: all .25s;
+  }
+  .sc-dot.active {
+    background: var(--blue-light);
+    width: 24px; border-radius: 4px;
+  }
+
+  /* responsivo */
+  @media (max-width: 900px) {
+    .sc-card { flex: 0 0 calc((100% - 24px) / 2); }
+  }
+  @media (max-width: 560px) {
+    .sc-card { flex: 0 0 100%; }
+  }
+
+  /* ═══════════════════════════════════════════
+     BACKUP EM NUVEM
+  ═══════════════════════════════════════════ */
+  #backup {
+    padding: 110px 5%;
+    background: var(--white);
+    position: relative; overflow: hidden;
+  }
+  #backup::after {
+    content: '';
+    position: absolute; bottom: -160px; right: -160px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,163,212,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .backup-inner { max-width: 1200px; margin: 0 auto; }
+  .backup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .backup-visual {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bk-orb {
+    width: 320px; height: 320px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(74,163,212,.08), rgba(26,95,158,.05));
+    border: 1px solid rgba(74,163,212,.14);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: bkPulse 3.2s ease-in-out infinite;
+  }
+  @keyframes bkPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(74,163,212,.1); }
+    50%      { box-shadow: 0 0 0 28px rgba(74,163,212,.0); }
+  }
+  .bk-center {
+    width: 116px; height: 116px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-mid), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.6rem; color: #fff;
+    box-shadow: 0 18px 55px rgba(26,95,158,.3);
+    position: relative; z-index: 2;
+  }
+  .bk-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px dashed rgba(74,163,212,.22);
+  }
+  .bk-ring:nth-child(1) { width: 196px; height: 196px; animation: spinSlow 12s linear infinite; }
+  .bk-ring:nth-child(2) { width: 276px; height: 276px; animation: spinSlow 20s linear infinite reverse; }
+  .bk-node {
+    position: absolute;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--white);
+    box-shadow: 0 4px 14px rgba(26,95,158,.14);
+    border: 1.5px solid rgba(74,163,212,.22);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .82rem; color: var(--blue-mid);
+  }
+  .bk-ring:nth-child(1) .bk-node { animation: spinSlow 12s linear infinite reverse; }
+  .bk-ring:nth-child(2) .bk-node { animation: spinSlow 20s linear infinite; }
+  .bk-ring:nth-child(1) .bk-node:nth-child(1) { top:-17px; left:50%; transform:translateX(-50%); }
+  .bk-ring:nth-child(1) .bk-node:nth-child(2) { bottom:-17px; left:50%; transform:translateX(-50%); }
+  .bk-ring:nth-child(2) .bk-node:nth-child(1) { top:-17px; left:50%; transform:translateX(-50%); }
+  .bk-ring:nth-child(2) .bk-node:nth-child(2) { right:-17px; top:50%; transform:translateY(-50%); }
+  .bk-ring:nth-child(2) .bk-node:nth-child(3) { left:-17px; top:50%; transform:translateY(-50%); }
+
+  .backup-features { display: flex; flex-direction: column; gap: 22px; }
+  .bk-feat {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(74,163,212,.12);
+    background: var(--blue-ghost);
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+  }
+  .bk-feat:hover {
+    border-color: rgba(74,163,212,.32);
+    transform: translateX(5px);
+    box-shadow: 0 6px 26px rgba(26,95,158,.07);
+  }
+  .bk-feat-ico {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--blue-mid), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.05rem;
+    box-shadow: 0 5px 16px rgba(26,95,158,.22);
+  }
+  .bk-feat-txt strong {
+    display: block; font-size: .88rem; font-weight: 700;
+    color: var(--blue-deep); margin-bottom: 3px;
+  }
+  .bk-feat-txt span { font-size: .8rem; color: var(--text-mid); line-height: 1.6; }
+  .bk-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 6px;
+    background: rgba(42,159,214,.1); border: 1px solid rgba(42,159,214,.22);
+    color: var(--accent); font-size: .67rem; font-weight: 600;
+    letter-spacing: .11em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 10px;
+  }
+  @media (max-width: 860px) {
+    .backup-grid { grid-template-columns: 1fr; gap: 44px; }
+    .backup-visual { order: -1; }
+    .bk-orb { width: 250px; height: 250px; }
+    .bk-ring:nth-child(1) { width: 152px; height: 152px; }
+    .bk-ring:nth-child(2) { width: 214px; height: 214px; }
+  }
+
+  /* ═══════════════════════════════════════════
+     SUPORTE HUMANO
+  ═══════════════════════════════════════════ */
+  #suporte {
+    padding: 110px 5%;
+    background: linear-gradient(160deg, #eaf5fc 0%, #f8fdff 100%);
+  }
+  .suporte-inner { max-width: 1200px; margin: 0 auto; }
+  .suporte-top {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 72px; align-items: center; margin-bottom: 64px;
+  }
+  .suporte-badges {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+  }
+  .suporte-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--white); border: 1px solid rgba(74,163,212,.2);
+    color: var(--blue-mid); font-size: .74rem; font-weight: 600;
+    padding: 7px 13px; border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(26,95,158,.06);
+  }
+  .suporte-badge i { font-size: .78rem; }
+  .suporte-chat {
+    background: var(--white);
+    border-radius: 22px; padding: 32px;
+    box-shadow: 0 18px 65px rgba(13,42,74,.1);
+    border: 1px solid rgba(74,163,212,.14);
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .chat-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+  }
+  .chat-avatar {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a5f9e, #4aa3d4);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1.05rem; flex-shrink: 0;
+  }
+  .chat-online {
+    display: flex; align-items: center; gap: 5px;
+    font-size: .71rem; font-weight: 600; color: #2ecc71;
+  }
+  .chat-online::before {
+    content: '';
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #2ecc71;
+    animation: onlinePulse 1.8s ease-in-out infinite;
+  }
+  @keyframes onlinePulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(46,204,113,.35); }
+    50%      { box-shadow: 0 0 0 5px rgba(46,204,113,.0); }
+  }
+  .chat-msgs { display: flex; flex-direction: column; gap: 10px; }
+  .chat-msg-in {
+    background: #eaf5fc;
+    border: 1px solid rgba(74,163,212,.12);
+    border-radius: 12px 12px 12px 0;
+    padding: 11px 14px;
+    font-size: .8rem; color: var(--text-mid); line-height: 1.5;
+    align-self: flex-start; max-width: 85%;
+  }
+  .chat-msg-out {
+    background: var(--blue-mid);
+    border-radius: 12px 12px 0 12px;
+    padding: 11px 14px;
+    font-size: .8rem; color: #fff; line-height: 1.5;
+    align-self: flex-end; max-width: 85%;
+  }
+  .chat-btn {
+    margin-top: 18px; width: 100%;
+    background: #25d366; color: #fff;
+    border: none; padding: 12px; border-radius: 10px;
+    font-weight: 600; font-size: .875rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background .2s;
+  }
+  .chat-btn:hover { background: #20b858; }
+
+  /* team cards */
+  .suporte-team {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+  }
+  .team-card {
+    background: var(--white); border-radius: 18px;
+    padding: 30px 22px; text-align: center;
+    border: 1px solid rgba(74,163,212,.12);
+    box-shadow: 0 6px 28px rgba(13,42,74,.05);
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    position: relative; overflow: hidden;
+  }
+  .team-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue-mid), var(--accent));
+    opacity: 0; transition: opacity .3s;
+  }
+  .team-card:hover { transform: translateY(-7px); box-shadow: 0 22px 55px rgba(13,42,74,.11); border-color: rgba(74,163,212,.28); }
+  .team-card:hover::before { opacity: 1; }
+  .team-avatar {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-mid), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.55rem; color: #fff;
+    box-shadow: 0 8px 22px rgba(26,95,158,.24);
+    margin: 0 auto 14px;
+  }
+  .team-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem; font-weight: 700; color: var(--blue-deep); margin-bottom: 3px;
+  }
+  .team-role {
+    font-size: .72rem; color: var(--blue-light); font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .team-card p { font-size: .8rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 14px; }
+  .team-avail {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: .71rem; font-weight: 600; color: #2ecc71;
+  }
+  .team-avail::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: #2ecc71;
+    animation: onlinePulse 1.8s ease-in-out infinite;
+  }
+  .suporte-stats {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 18px;
+    margin-top: 56px;
+    padding: 34px 38px;
+    background: var(--blue-deep); border-radius: 18px;
+    box-shadow: 0 18px 55px rgba(13,42,74,.14);
+  }
+  .sp-stat { text-align: center; }
+  .sp-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.3rem; font-weight: 700; color: var(--blue-light); line-height: 1;
+  }
+  .sp-stat-label {
+    font-size: .7rem; color: var(--silver-dark);
+    letter-spacing: .1em; text-transform: uppercase; margin-top: 5px;
+  }
+  @media (max-width: 900px) {
+    .suporte-top { grid-template-columns: 1fr; gap: 40px; }
+    .suporte-team { grid-template-columns: 1fr 1fr; }
+    .suporte-stats { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    .suporte-team { grid-template-columns: 1fr; }
+    .suporte-stats { grid-template-columns: 1fr 1fr; gap: 10px; padding: 22px 18px; }
+  }
 </style>
 </head>
 <body>
@@ -945,6 +1395,9 @@
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#home">Home</a></li>
+    <li><a href="#nossos-servicos">Serviços</a></li>
+    <li><a href="#backup">Backup</a></li>
+    <li><a href="#suporte">Suporte</a></li>
     <li><a href="#sistema">O Sistema</a></li>
     <li><a href="#clientes">Área do Cliente</a></li>
     <li><a href="/nossahistoria.html">Nossa história</a></li>
@@ -1070,6 +1523,325 @@
         <p>Garanta a continuidade do seu negócio com nosso suporte técnico humano e dedicado. Contamos com uma equipe de especialistas focada em monitorar e manter sua operação estável, oferecendo soluções rápidas e preventivas para que sua empresa nunca pare por falhas técnicas.</p>
       </div>
       
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     NOSSOS SERVIÇOS – CAROUSEL 3D
+══════════════════════════════════════ -->
+<section id="nossos-servicos">
+  <div style="max-width:1100px;margin:0 auto">
+
+    <div class="sc-header">
+      <div class="section-label">O que oferecemos</div>
+      <h2 class="section-title">Nossos Serviços</h2>
+      <p class="section-sub">Passe o mouse para descobrir os detalhes. Use as setas para navegar entre os cards.</p>
+    </div>
+
+    <div class="sc-viewport">
+      <div class="sc-track" id="scTrack">
+
+        <div class="sc-card" onclick="this.classList.toggle('flipped')">
+          <div class="sc-card-inner">
+            <div class="sc-face sc-front">
+              <div>
+                <div class="sc-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Gestão Empresarial ERP</h3>
+                <p>Centralize financeiro, estoque e vendas em uma plataforma única. Decisões estratégicas em tempo real.</p>
+              </div>
+              <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
+            </div>
+            <div class="sc-face sc-back">
+              <h4>ERP Completo</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Controle financeiro integrado</li>
+                <li><i class="fa-solid fa-check"></i> Gestão de estoque em tempo real</li>
+                <li><i class="fa-solid fa-check"></i> Fluxo de vendas automatizado</li>
+                <li><i class="fa-solid fa-check"></i> Relatórios gerenciais avançados</li>
+                <li><i class="fa-solid fa-check"></i> Multi-empresa e multi-filial</li>
+              </ul>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-card" onclick="this.classList.toggle('flipped')">
+          <div class="sc-card-inner">
+            <div class="sc-face sc-front">
+              <div>
+                <div class="sc-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>Gestão Tributária</h3>
+                <p>NF-e, NFC-e, CT-e e MDF-e integrados ao SPED. Conformidade fiscal total, sem complicação.</p>
+              </div>
+              <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
+            </div>
+            <div class="sc-face sc-back">
+              <h4>Fiscal & Tributário</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Emissão de NF-e e NFC-e</li>
+                <li><i class="fa-solid fa-check"></i> CT-e e MDF-e integrados</li>
+                <li><i class="fa-solid fa-check"></i> SPED Fiscal e Contábil</li>
+                <li><i class="fa-solid fa-check"></i> Envio automático à contabilidade</li>
+                <li><i class="fa-solid fa-check"></i> Relatório mensal de conferência</li>
+              </ul>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-card" onclick="this.classList.toggle('flipped')">
+          <div class="sc-card-inner">
+            <div class="sc-face sc-front">
+              <div>
+                <div class="sc-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h3>Backup em Nuvem</h3>
+                <p>Dados protegidos automaticamente 24h por dia. Recuperação instantânea em qualquer situação.</p>
+              </div>
+              <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
+            </div>
+            <div class="sc-face sc-back">
+              <h4>Segurança Total</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Backup automático diário</li>
+                <li><i class="fa-solid fa-check"></i> Armazenamento multi-nuvem</li>
+                <li><i class="fa-solid fa-check"></i> Backup manual a qualquer hora</li>
+                <li><i class="fa-solid fa-check"></i> Criptografia ponta-a-ponta</li>
+                <li><i class="fa-solid fa-check"></i> Recuperação com 1 clique</li>
+              </ul>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-card" onclick="this.classList.toggle('flipped')">
+          <div class="sc-card-inner">
+            <div class="sc-face sc-front">
+              <div>
+                <div class="sc-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>Suporte Humano</h3>
+                <p>Equipe real e especializada. Sem bots, sem filas. Atendimento que resolve de verdade.</p>
+              </div>
+              <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
+            </div>
+            <div class="sc-face sc-back">
+              <h4>Atendimento Dedicado</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Especialistas humanos treinados</li>
+                <li><i class="fa-solid fa-check"></i> Resposta em até 2 horas</li>
+                <li><i class="fa-solid fa-check"></i> Suporte remoto e presencial</li>
+                <li><i class="fa-solid fa-check"></i> Atendimento via WhatsApp</li>
+                <li><i class="fa-solid fa-check"></i> Histórico de chamados</li>
+              </ul>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-card" onclick="this.classList.toggle('flipped')">
+          <div class="sc-card-inner">
+            <div class="sc-face sc-front">
+              <div>
+                <div class="sc-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Relatórios Gerenciais</h3>
+                <p>Dashboards interativos com KPIs em tempo real. Transforme dados em decisões precisas.</p>
+              </div>
+              <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
+            </div>
+            <div class="sc-face sc-back">
+              <h4>Inteligência de Dados</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> KPIs em tempo real</li>
+                <li><i class="fa-solid fa-check"></i> Comparativos por período</li>
+                <li><i class="fa-solid fa-check"></i> Análise de lucratividade</li>
+                <li><i class="fa-solid fa-check"></i> Exportação PDF e Excel</li>
+                <li><i class="fa-solid fa-check"></i> Gráficos personalizáveis</li>
+              </ul>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-card" onclick="this.classList.toggle('flipped')">
+          <div class="sc-card-inner">
+            <div class="sc-face sc-front">
+              <div>
+                <div class="sc-icon"><i class="fa-solid fa-kitchen-set"></i></div>
+                <h3>Versatilidade Operacional</h3>
+                <p>Delivery, mesas, encomendas e fast food. Um sistema que se adapta ao seu negócio.</p>
+              </div>
+              <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
+            </div>
+            <div class="sc-face sc-back">
+              <h4>Múltiplos Canais</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Módulo delivery integrado</li>
+                <li><i class="fa-solid fa-check"></i> Gestão de mesas e comanda</li>
+                <li><i class="fa-solid fa-check"></i> Controle de encomendas</li>
+                <li><i class="fa-solid fa-check"></i> PDV para fast food</li>
+                <li><i class="fa-solid fa-check"></i> App para garçom</li>
+              </ul>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /sc-track -->
+    </div><!-- /sc-viewport -->
+
+    <div class="sc-controls">
+      <button class="sc-btn" id="scPrev"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="sc-dots" id="scDots"></div>
+      <button class="sc-btn" id="scNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BACKUP EM NUVEM
+══════════════════════════════════════ -->
+<section id="backup">
+  <div class="backup-inner">
+    <div class="section-label">Segurança de Dados</div>
+    <h2 class="section-title">Backup Automático<br>na Nuvem</h2>
+    <p class="section-sub">Seus dados protegidos 24 horas por dia, 7 dias por semana. Automatizado, criptografado e sempre disponível.</p>
+
+    <div class="backup-grid">
+      <div class="backup-visual">
+        <div class="bk-orb">
+          <div class="bk-ring">
+            <div class="bk-node"><i class="fa-solid fa-database"></i></div>
+            <div class="bk-node"><i class="fa-solid fa-shield-halved"></i></div>
+          </div>
+          <div class="bk-ring">
+            <div class="bk-node"><i class="fa-solid fa-server"></i></div>
+            <div class="bk-node"><i class="fa-brands fa-google-drive"></i></div>
+            <div class="bk-node"><i class="fa-solid fa-lock"></i></div>
+          </div>
+          <div class="bk-center"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        </div>
+      </div>
+
+      <div class="backup-features">
+        <div class="bk-feat">
+          <div class="bk-feat-ico"><i class="fa-solid fa-robot"></i></div>
+          <div class="bk-feat-txt">
+            <strong>Backup 100% Automático</strong>
+            <span>Programado para rodar diariamente sem intervenção humana. Configure uma vez e esqueça — seus dados sempre protegidos.</span>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Zero esforço manual</div>
+          </div>
+        </div>
+        <div class="bk-feat">
+          <div class="bk-feat-ico"><i class="fa-solid fa-cloud"></i></div>
+          <div class="bk-feat-txt">
+            <strong>Multi-Nuvem Redundante</strong>
+            <span>Dados armazenados em múltiplos servidores simultaneamente. Se um falhar, os outros garantem a continuidade.</span>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Redundância total</div>
+          </div>
+        </div>
+        <div class="bk-feat">
+          <div class="bk-feat-ico"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div class="bk-feat-txt">
+            <strong>Backup Manual a Qualquer Hora</strong>
+            <span>Além do automático, faça backup instantâneo sempre que precisar — antes de atualizações ou auditorias.</span>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Disponível 24/7</div>
+          </div>
+        </div>
+        <div class="bk-feat">
+          <div class="bk-feat-ico"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+          <div class="bk-feat-txt">
+            <strong>Recuperação Instantânea</strong>
+            <span>Em caso de falha, restaure tudo com 1 clique. Em minutos sua operação volta sem perda de dados.</span>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Recuperação em minutos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SUPORTE HUMANO
+══════════════════════════════════════ -->
+<section id="suporte">
+  <div class="suporte-inner">
+    <div class="section-label">Atendimento Especializado</div>
+    <h2 class="section-title">Suporte<br>Humano Real</h2>
+    <p class="section-sub">Nada de robôs. Você fala com especialistas treinados que conhecem seu negócio e resolvem de verdade.</p>
+
+    <div class="suporte-top">
+      <div>
+        <div class="suporte-badges">
+          <span class="suporte-badge"><i class="fa-solid fa-user-tie"></i> Atendimento Humano</span>
+          <span class="suporte-badge"><i class="fa-solid fa-bolt"></i> Resposta em 2h</span>
+          <span class="suporte-badge"><i class="fa-brands fa-whatsapp"></i> Via WhatsApp</span>
+          <span class="suporte-badge"><i class="fa-solid fa-laptop"></i> Suporte Remoto</span>
+          <span class="suporte-badge"><i class="fa-solid fa-location-dot"></i> Presencial</span>
+          <span class="suporte-badge"><i class="fa-solid fa-clock"></i> Seg–Sex, 8h–17h</span>
+        </div>
+      </div>
+
+      <div class="suporte-chat">
+        <div class="chat-header">
+          <div class="chat-avatar"><i class="fa-solid fa-headset"></i></div>
+          <div>
+            <div style="font-weight:700;font-size:.92rem;color:#0d2a4a;">Suporte MKS</div>
+            <div class="chat-online">Online agora</div>
+          </div>
+        </div>
+        <div class="chat-msgs">
+          <div class="chat-msg-in">Olá! Sou João da equipe MKS. Como posso te ajudar hoje? 😊</div>
+          <div class="chat-msg-out">Preciso de ajuda com o módulo fiscal!</div>
+          <div class="chat-msg-in">Claro! Já estou acessando seu sistema remotamente. Em 5 minutos resolvo isso. ✅</div>
+        </div>
+        <button class="chat-btn" onclick="chamarWhatsapp()">
+          <i class="fa-brands fa-whatsapp"></i> Falar com especialista agora
+        </button>
+      </div>
+    </div>
+
+    <div class="suporte-team">
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+        <h4>Atendimento Comercial</h4>
+        <div class="team-role">Consultor de Soluções</div>
+        <p>Entende suas necessidades e apresenta a solução ideal para o seu negócio, sem enrolação.</p>
+        <div class="team-avail">Disponível agora</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h4>Suporte Técnico</h4>
+        <div class="team-role">Especialista em Sistemas</div>
+        <p>Resolve falhas, configura módulos e realiza manutenções com acesso remoto seguro.</p>
+        <div class="team-avail">Disponível agora</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h4>Treinamento</h4>
+        <div class="team-role">Especialista em Capacitação</div>
+        <p>Treina sua equipe presencial ou remotamente. Onboarding completo para novos usuários.</p>
+        <div class="team-avail">Disponível agora</div>
+      </div>
+    </div>
+
+    <div class="suporte-stats">
+      <div class="sp-stat">
+        <div class="sp-stat-num">2h</div>
+        <div class="sp-stat-label">Tempo médio de resposta</div>
+      </div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">98%</div>
+        <div class="sp-stat-label">Satisfação no suporte</div>
+      </div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">30+</div>
+        <div class="sp-stat-label">Anos de experiência</div>
+      </div>
+      <div class="sp-stat">
+        <div class="sp-stat-num">1.4k+</div>
+        <div class="sp-stat-label">Empresas atendidas</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1610,6 +2382,84 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') lightboxNav(-1);
   if (e.key === 'ArrowRight') lightboxNav(1);
 });
+
+// ── Serviços Carousel ──────────────────────────────────────
+(function(){
+  var track   = document.getElementById('scTrack');
+  var dotsBox = document.getElementById('scDots');
+  var btnPrev = document.getElementById('scPrev');
+  var btnNext = document.getElementById('scNext');
+  if(!track) return;
+
+  var cards   = Array.from(track.querySelectorAll('.sc-card'));
+  var total   = cards.length;
+  var cur     = 0;
+
+  function perPage(){
+    return window.innerWidth <= 560 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  }
+  function maxIdx(){ return Math.max(0, total - perPage()); }
+
+  function buildDots(){
+    dotsBox.innerHTML = '';
+    var pages = Math.ceil(total / perPage());
+    for(var i=0;i<pages;i++){
+      (function(idx){
+        var d = document.createElement('button');
+        d.className = 'sc-dot';
+        dotsBox.appendChild(d);
+        d.addEventListener('click', function(){ goTo(idx * perPage()); });
+      })(i);
+    }
+    updateDots();
+  }
+
+  function updateDots(){
+    var page = Math.round(cur / perPage());
+    Array.from(dotsBox.querySelectorAll('.sc-dot')).forEach(function(d,i){
+      d.classList.toggle('active', i===page);
+    });
+  }
+
+  function goTo(idx){
+    cur = Math.max(0, Math.min(idx, maxIdx()));
+    var cardW = cards[0].getBoundingClientRect().width;
+    var gap   = 24;
+    track.style.transform = 'translateX(-' + (cur*(cardW+gap)) + 'px)';
+    updateDots();
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur >= maxIdx();
+  }
+
+  btnPrev.addEventListener('click', function(){ goTo(cur - perPage()); });
+  btnNext.addEventListener('click', function(){ goTo(cur + perPage()); });
+
+  var timer = setInterval(function(){
+    goTo(cur + perPage() > maxIdx() ? 0 : cur + perPage());
+  }, 4500);
+
+  track.parentElement.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  track.parentElement.addEventListener('mouseleave', function(){
+    clearInterval(timer);
+    timer = setInterval(function(){
+      goTo(cur + perPage() > maxIdx() ? 0 : cur + perPage());
+    }, 4500);
+  });
+
+  var tx = null;
+  track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend',   function(e){
+    if(tx===null) return;
+    var d = tx - e.changedTouches[0].clientX;
+    if(Math.abs(d)>40) goTo(cur + (d>0 ? perPage() : -perPage()));
+    tx = null;
+  });
+
+  window.addEventListener('resize', function(){ buildDots(); goTo(0); });
+
+  buildDots();
+  goTo(0);
+})();
 
 function chamarWhatsapp() {
   // href="https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte" class=""

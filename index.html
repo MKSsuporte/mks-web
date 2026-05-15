@@ -1033,11 +1033,11 @@
   }
   .sc-front h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.18rem; font-weight: 700; color: #fff;
+    font-size: 25px; font-weight: 700; color: #fff;
     line-height: 1.3; margin-bottom: 10px;
   }
   .sc-front p {
-    font-size: .81rem; color: rgba(200,232,248,.62);
+    font-size: 20px; color: rgba(200,232,248,.62);
     line-height: 1.65; flex: 1; margin-bottom: 16px;
   }
   .sc-hint {
@@ -1048,7 +1048,7 @@
 
   .sc-back h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.12rem; font-weight: 700; color: #fff;
+    font-size: 22px; font-weight: 700; color: #fff;
   }
   .sc-back ul {
     list-style: none;
@@ -1059,7 +1059,7 @@
     display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
   }
   .sc-back ul li i {
-    font-size: .7rem; color: rgba(255,255,255,.65);
+    font-size: 20px; color: rgba(255,255,255,.65);
     margin-top: 3px; flex-shrink: 0;
   }
   .sc-cta-btn {
@@ -1238,7 +1238,8 @@
   .suporte-inner { max-width: 1200px; margin: 0 auto; }
   .suporte-top {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 72px; align-items: center; margin-bottom: 64px;
+    gap: 40px; align-items: center; margin-bottom: 64px;
+    margin-top: 0px;
   }
   .suporte-badges {
     display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
@@ -1420,7 +1421,7 @@
         A MarkSystte é referência em automação empresarial há mais de três décadas. Desenvolvemos sistemas robustos, integrados e escaláveis para empresas que querem crescer com eficiência e segurança.
       </p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="chamarWhatsapp()"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Contratar Agora</button>
+        <button class="btn-primary" onclick="ChamarWhatsapp()"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Contratar Agora</button>
         <a href="#clientes" class="btn-outline">Ver Clientes</a>
       </div>
       <div class="hero-stats">
@@ -1561,7 +1562,7 @@
                 <li><i class="fa-solid fa-check"></i> Relatórios gerenciais avançados</li>
                 <li><i class="fa-solid fa-check"></i> Multi-empresa e multi-filial</li>
               </ul>
-              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();ChamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
             </div>
           </div>
         </div>
@@ -1582,10 +1583,10 @@
                 <li><i class="fa-solid fa-check"></i> Emissão de NF-e e NFC-e</li>
                 <li><i class="fa-solid fa-check"></i> CT-e e MDF-e integrados</li>
                 <li><i class="fa-solid fa-check"></i> SPED Fiscal e Contábil</li>
-                <li><i class="fa-solid fa-check"></i> Envio automático à contabilidade</li>
+                <li><i class="fa-solid fa-check"></i> Envio automatizado à contabilidade</li>
                 <li><i class="fa-solid fa-check"></i> Relatório mensal de conferência</li>
               </ul>
-              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();ChamarWhatsapp('os módulos fiscais do sistema')"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
             </div>
           </div>
         </div>
@@ -1603,13 +1604,13 @@
             <div class="sc-face sc-back">
               <h4>Segurança Total</h4>
               <ul>
-                <li><i class="fa-solid fa-check"></i> Backup automático diário</li>
+                <li><i class="fa-solid fa-check"></i> Backup automatizado diário</li>
                 <li><i class="fa-solid fa-check"></i> Armazenamento multi-nuvem</li>
                 <li><i class="fa-solid fa-check"></i> Backup manual a qualquer hora</li>
                 <li><i class="fa-solid fa-check"></i> Criptografia ponta-a-ponta</li>
                 <li><i class="fa-solid fa-check"></i> Recuperação com 1 clique</li>
               </ul>
-              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();ChamarWhatsapp('o serviço de backup em núvem')"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
             </div>
           </div>
         </div>
@@ -1633,7 +1634,7 @@
                 <li><i class="fa-solid fa-check"></i> Atendimento via WhatsApp</li>
                 <li><i class="fa-solid fa-check"></i> Histórico de chamados</li>
               </ul>
-              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();ChamarWhatsapp('os módulos de gestão do sistema')"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
             </div>
           </div>
         </div>
@@ -1644,20 +1645,20 @@
               <div>
                 <div class="sc-icon"><i class="fa-solid fa-chart-pie"></i></div>
                 <h3>Relatórios Gerenciais</h3>
-                <p>Dashboards interativos com KPIs em tempo real. Transforme dados em decisões precisas.</p>
+                <p>Dashboards interativos em tempo real. Transforme dados em decisões precisas.</p>
               </div>
               <div class="sc-hint"><i class="fa-solid fa-rotate"></i> Ver detalhes</div>
             </div>
             <div class="sc-face sc-back">
               <h4>Inteligência de Dados</h4>
               <ul>
-                <li><i class="fa-solid fa-check"></i> KPIs em tempo real</li>
+                <li><i class="fa-solid fa-check"></i> Dashboard em tempo real</li>
                 <li><i class="fa-solid fa-check"></i> Comparativos por período</li>
                 <li><i class="fa-solid fa-check"></i> Análise de lucratividade</li>
                 <li><i class="fa-solid fa-check"></i> Exportação PDF e Excel</li>
                 <li><i class="fa-solid fa-check"></i> Gráficos personalizáveis</li>
               </ul>
-              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();ChamarWhatsapp('os relatórios e dashboards do sistema')"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
             </div>
           </div>
         </div>
@@ -1681,7 +1682,7 @@
                 <li><i class="fa-solid fa-check"></i> PDV para fast food</li>
                 <li><i class="fa-solid fa-check"></i> App para garçom</li>
               </ul>
-              <button class="sc-cta-btn" onclick="event.stopPropagation();chamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
+              <button class="sc-cta-btn" onclick="event.stopPropagation();ChamarWhatsapp()"><i class="fa-solid fa-paper-plane"></i> Contratar</button>
             </div>
           </div>
         </div>
@@ -1704,7 +1705,7 @@
 <section id="backup">
   <div class="backup-inner">
     <div class="section-label">Segurança de Dados</div>
-    <h2 class="section-title">Backup Automático<br>na Nuvem</h2>
+    <h2 class="section-title">Backup automatizado<br>na Nuvem</h2>
     <p class="section-sub">Seus dados protegidos 24 horas por dia, 7 dias por semana. Automatizado, criptografado e sempre disponível.</p>
 
     <div class="backup-grid">
@@ -1727,9 +1728,9 @@
         <div class="bk-feat">
           <div class="bk-feat-ico"><i class="fa-solid fa-robot"></i></div>
           <div class="bk-feat-txt">
-            <strong>Backup 100% Automático</strong>
+            <strong>Backup Automatizado</strong>
             <span>Programado para rodar diariamente sem intervenção humana. Configure uma vez e esqueça — seus dados sempre protegidos.</span>
-            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Zero esforço manual</div>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Basta um clique.</div>
           </div>
         </div>
         <div class="bk-feat">
@@ -1737,14 +1738,14 @@
           <div class="bk-feat-txt">
             <strong>Multi-Nuvem Redundante</strong>
             <span>Dados armazenados em múltiplos servidores simultaneamente. Se um falhar, os outros garantem a continuidade.</span>
-            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Redundância total</div>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Em breve...</div>
           </div>
         </div>
         <div class="bk-feat">
           <div class="bk-feat-ico"><i class="fa-solid fa-clock-rotate-left"></i></div>
           <div class="bk-feat-txt">
             <strong>Backup Manual a Qualquer Hora</strong>
-            <span>Além do automático, faça backup instantâneo sempre que precisar — antes de atualizações ou auditorias.</span>
+            <span>Faça backup instantâneo sempre que precisar — antes de atualizações ou auditorias.</span>
             <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Disponível 24/7</div>
           </div>
         </div>
@@ -1774,10 +1775,10 @@
       <div>
         <div class="suporte-badges">
           <span class="suporte-badge"><i class="fa-solid fa-user-tie"></i> Atendimento Humano</span>
-          <span class="suporte-badge"><i class="fa-solid fa-bolt"></i> Resposta em 2h</span>
+          <span class="suporte-badge"><i class="fa-solid fa-bolt"></i> Resposta em no máximo 2h</span>
           <span class="suporte-badge"><i class="fa-brands fa-whatsapp"></i> Via WhatsApp</span>
           <span class="suporte-badge"><i class="fa-solid fa-laptop"></i> Suporte Remoto</span>
-          <span class="suporte-badge"><i class="fa-solid fa-location-dot"></i> Presencial</span>
+          <span class="suporte-badge"><i class="fa-solid fa-location-dot"></i> Presencial c/ agendamento</span>
           <span class="suporte-badge"><i class="fa-solid fa-clock"></i> Seg–Sex, 8h–17h</span>
         </div>
       </div>
@@ -1791,11 +1792,11 @@
           </div>
         </div>
         <div class="chat-msgs">
-          <div class="chat-msg-in">Olá! Sou João da equipe MKS. Como posso te ajudar hoje? 😊</div>
-          <div class="chat-msg-out">Preciso de ajuda com o módulo fiscal!</div>
+          <div class="chat-msg-in">Olá! Sou Marquinhos, da equipe MKS. Como posso te ajudar hoje? 😊</div>
+          <div class="chat-msg-out">Preciso de ajuda no módulo fiscal.</div>
           <div class="chat-msg-in">Claro! Já estou acessando seu sistema remotamente. Em 5 minutos resolvo isso. ✅</div>
         </div>
-        <button class="chat-btn" onclick="chamarWhatsapp()">
+        <button class="chat-btn" onclick="ChamarWhatsapp()">
           <i class="fa-brands fa-whatsapp"></i> Falar com especialista agora
         </button>
       </div>
@@ -2119,7 +2120,7 @@
       Junte-se a mais de 1.400 empresas que confiam na MarkSystte. Solicite uma demonstração gratuita e veja na prática como podemos transformar sua operação.
     </p>
     <div class="cta-btns">
-      <button class="btn-cta-main" onclick="chamarWhatsapp()"><i class="fa-solid fa-paper-plane" style="margin-right:10px"></i>Contratar MarkSystte</button>
+      <button class="btn-cta-main" onclick="ChamarWhatsapp()"><i class="fa-solid fa-paper-plane" style="margin-right:10px"></i>Contratar MarkSystte</button>
       <button class="btn-cta-ghost" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-comment-dots" style="margin-right:8px"></i>Falar com especialista</button>
     </div>
     <p class="founder-quote">"MarkSystte tecnologia que funciona, suporte que não te abondona."</p>
@@ -2206,7 +2207,7 @@
             <label>Mensagem</label>
             <textarea placeholder="Descreva brevemente sua necessidade..."></textarea>
           </div>
-          <button class="btn-form" onclick="chamarWhatsapp()"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Enviar Mensagem</button>
+          <button class="btn-form" onclick="ChamarWhatsapp()"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Enviar Mensagem</button>
         </form>
       </div>
     </div>
@@ -2461,9 +2462,23 @@ document.addEventListener('keydown', e => {
   goTo(0);
 })();
 
-function chamarWhatsapp() {
-  // href="https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte" class=""
-  window.open("https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte");
+/**
+ * função para chamar o whatsapp com ou sem complemento.
+ * para chamar a função sem qualquer complemento na mensagem (ou seja,a mensagem padrão),
+ * chame a função sem passar o parâmetro complemento.
+ * para criar a função com mensagem específica, passe uma string para o complemento.
+ * para criar uma mensagem 100% personalizada, chame o parâmetro absolute;
+ */
+function ChamarWhatsapp(complemento, absolute) {
+  if (complemento == undefined)
+    msg = "https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20contratar%20a%20MarkSystte";
+  else
+    msg = `https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20conhecer%20mais%20sobre ${complemento}.`;
+
+  if (absolute != undefined)
+    msg = `https://wa.me/557991808054?text=${absolute}`;
+
+  window.open(msg);
   contratarServico();
 }
 

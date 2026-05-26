@@ -50,7 +50,7 @@ document.getElementById('carouselPrev').addEventListener('click', () => goTo(cur
 document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
 
 // Auto-advance
-let autoplay = setInterval(() => goTo(current + 1), 5500);
+let autoplay = setInterval(() => goTo(current + 1), 500);
 track.parentElement.addEventListener('mouseenter', () => clearInterval(autoplay));
 track.parentElement.addEventListener('mouseleave', () => {
   clearInterval(autoplay);
@@ -167,17 +167,7 @@ document.addEventListener('keydown', e => {
   btnPrev.addEventListener('click', function(){ goTo(cur - perPage()); });
   btnNext.addEventListener('click', function(){ goTo(cur + perPage()); });
 
-  var timer = setInterval(function(){
-    goTo(cur + perPage() > maxIdx() ? 0 : cur + perPage());
-  }, 4500);
-
-  track.parentElement.addEventListener('mouseenter', function(){ clearInterval(timer); });
-  track.parentElement.addEventListener('mouseleave', function(){
-    clearInterval(timer);
-    timer = setInterval(function(){
-      goTo(cur + perPage() > maxIdx() ? 0 : cur + perPage());
-    }, 4500);
-  });
+  // Autoplay removido daqui
 
   var tx = null;
   track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});

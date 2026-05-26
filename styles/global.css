@@ -19,7 +19,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: Verdana;
     background: var(--white);
     color: var(--text-dark);
     overflow-x: hidden;

@@ -72,13 +72,15 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="logo-showcase">
-        <div class="logo-ring"></div>
-        <div class="logo-ring"></div>
-        <div class="logo-ring"></div>
-        <div class="logo-center">
-          <img src="../Assets/LogoMKS.png" alt="MKS Logo" onerror="this.parentElement.innerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:2.4rem;font-weight:700;color:#1a5f9e\'>MKS</span>'">
-        </div>
+      <!-- ✏️ Troque o src pela sua imagem -->
+      <img class="hero-img" src="./Assets/ImageSource/capa-gestor.png" alt="MarkSystte automação empresarial"
+           onerror="this.style.display='none'">
+      <!-- Degradê lateral (desktop) e inferior (mobile) -->
+      <div class="hero-img-fade"></div>
+      <!-- Logo flutuante -->
+      <div class="hero-img-logo">
+        <img src="../Assets/LogoMKS.png" alt="MKS Logo"
+             onerror="this.outerHTML='<span class=\'hero-img-logo-text\'>MKS</span>'">
       </div>
     </div>
   </div>
@@ -173,7 +175,7 @@
       <div class="service-card service-card-img">
         <h3>Cloud & Infraestrutura</h3>
         <div class="service-img-wrap">
-          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80" alt="Cloud e Infraestrutura" loading="lazy">
+          <img src="./Assets/ImageSource/cloud.png" alt="Cloud e Infraestrutura" loading="lazy">
           <div class="service-img-overlay"><i class="fa-solid fa-cloud"></i></div>
         </div>
         <a href="https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20Cloud%20e%20Infraestrutura%20da%20MarkSystte" target="_blank" class="service-saiba-mais"><i class="fa-brands fa-whatsapp"></i> Saiba Mais</a>
@@ -369,22 +371,20 @@
 <section id="backup">
   <div class="backup-inner">
     <div class="section-label">Segurança de Dados</div>
-    <h2 class="section-title">Backup automatizado<br>na Nuvem</h2>
+    <h2 class="section-title">Backup Automatizado<br>na Nuvem</h2>
     <p class="section-sub">Seus dados protegidos 24 horas por dia, 7 dias por semana. Automatizado, criptografado e sempre disponível.</p>
 
     <div class="backup-grid">
       <div class="backup-visual">
-        <div class="bk-orb">
-          <div class="bk-ring">
-            <div class="bk-node"><i class="fa-solid fa-database"></i></div>
-            <div class="bk-node"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="bk-hero">
+          <img src="./Assets/ImageSource/backup.png" alt="Profissional de TI gerenciando backup em nuvem" loading="lazy">
+          <div class="bk-hero-overlay"></div>
+          <div class="bk-hero-title"><i class="fa-solid fa-shield-halved"></i> Proteção Ativa</div>
+          <div class="bk-hero-pills">
+            <span class="bk-hero-pill green"><i class="fa-solid fa-circle" style="font-size:.45rem"></i> Backup rodando agora</span>
+            <span class="bk-hero-pill"><i class="fa-solid fa-cloud-arrow-up"></i> Multi-nuvem</span>
+            <span class="bk-hero-pill"><i class="fa-solid fa-lock"></i> Criptografado</span>
           </div>
-          <div class="bk-ring">
-            <div class="bk-node"><i class="fa-solid fa-server"></i></div>
-            <div class="bk-node"><i class="fa-brands fa-google-drive"></i></div>
-            <div class="bk-node"><i class="fa-solid fa-lock"></i></div>
-          </div>
-          <div class="bk-center"><i class="fa-solid fa-cloud-arrow-up"></i></div>
         </div>
       </div>
 
@@ -392,9 +392,9 @@
         <div class="bk-feat">
           <div class="bk-feat-ico"><i class="fa-solid fa-robot"></i></div>
           <div class="bk-feat-txt">
-            <strong>Backup Automatizado</strong>
+            <strong>Backup 100% Automático</strong>
             <span>Programado para rodar diariamente sem intervenção humana. Configure uma vez e esqueça — seus dados sempre protegidos.</span>
-            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Basta um clique.</div>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Zero esforço manual</div>
           </div>
         </div>
         <div class="bk-feat">
@@ -402,14 +402,14 @@
           <div class="bk-feat-txt">
             <strong>Multi-Nuvem Redundante</strong>
             <span>Dados armazenados em múltiplos servidores simultaneamente. Se um falhar, os outros garantem a continuidade.</span>
-            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Em breve...</div>
+            <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Redundância total</div>
           </div>
         </div>
         <div class="bk-feat">
           <div class="bk-feat-ico"><i class="fa-solid fa-clock-rotate-left"></i></div>
           <div class="bk-feat-txt">
             <strong>Backup Manual a Qualquer Hora</strong>
-            <span>Faça backup instantâneo sempre que precisar — antes de atualizações ou auditorias.</span>
+            <span>Além do automático, faça backup instantâneo sempre que precisar — antes de atualizações ou auditorias.</span>
             <div class="bk-badge"><i class="fa-solid fa-circle-check"></i> Disponível 24/7</div>
           </div>
         </div>
@@ -429,6 +429,9 @@
 <!-- ══════════════════════════════════════
      SUPORTE HUMANO
 ══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     SUPORTE HUMANO
+══════════════════════════════════════ -->
 <section id="suporte">
   <div class="suporte-inner">
     <div class="section-label">Atendimento Especializado</div>
@@ -439,10 +442,10 @@
       <div>
         <div class="suporte-badges">
           <span class="suporte-badge"><i class="fa-solid fa-user-tie"></i> Atendimento Humano</span>
-          <span class="suporte-badge"><i class="fa-solid fa-bolt"></i> Resposta em no máximo 2h</span>
+          <span class="suporte-badge"><i class="fa-solid fa-bolt"></i> Resposta em 2h</span>
           <span class="suporte-badge"><i class="fa-brands fa-whatsapp"></i> Via WhatsApp</span>
           <span class="suporte-badge"><i class="fa-solid fa-laptop"></i> Suporte Remoto</span>
-          <span class="suporte-badge"><i class="fa-solid fa-location-dot"></i> Presencial c/ agendamento</span>
+          <span class="suporte-badge"><i class="fa-solid fa-location-dot"></i> Presencial</span>
           <span class="suporte-badge"><i class="fa-solid fa-clock"></i> Seg–Sex, 8h–17h</span>
         </div>
       </div>
@@ -456,32 +459,41 @@
           </div>
         </div>
         <div class="chat-msgs">
-          <div class="chat-msg-in">Olá! Sou Marquinhos, da equipe MKS. Como posso te ajudar hoje? 😊</div>
-          <div class="chat-msg-out">Preciso de ajuda no módulo fiscal.</div>
+          <div class="chat-msg-in">Olá! Sou João da equipe MKS. Como posso te ajudar hoje? 😊</div>
+          <div class="chat-msg-out">Preciso de ajuda com o módulo fiscal!</div>
           <div class="chat-msg-in">Claro! Já estou acessando seu sistema remotamente. Em 5 minutos resolvo isso. ✅</div>
         </div>
-        <button class="chat-btn" onclick="ChamarWhatsapp()">
+        <button class="chat-btn" onclick="chamarWhatsapp()">
           <i class="fa-brands fa-whatsapp"></i> Falar com especialista agora
         </button>
       </div>
     </div>
 
     <div class="suporte-team">
-      <div class="team-card">
+      <div class="team-card team-card-photo">
+        <div class="team-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Consultor Comercial" loading="lazy">
+        </div>
         <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
         <h4>Atendimento Comercial</h4>
         <div class="team-role">Consultor de Soluções</div>
         <p>Entende suas necessidades e apresenta a solução ideal para o seu negócio, sem enrolação.</p>
         <div class="team-avail">Disponível agora</div>
       </div>
-      <div class="team-card">
+      <div class="team-card team-card-photo">
+        <div class="team-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=200&q=80" alt="Especialista Técnico" loading="lazy">
+        </div>
         <div class="team-avatar"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <h4>Suporte Técnico</h4>
         <div class="team-role">Especialista em Sistemas</div>
         <p>Resolve falhas, configura módulos e realiza manutenções com acesso remoto seguro.</p>
         <div class="team-avail">Disponível agora</div>
       </div>
-      <div class="team-card">
+      <div class="team-card team-card-photo">
+        <div class="team-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="Especialista em Treinamento" loading="lazy">
+        </div>
         <div class="team-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
         <h4>Treinamento</h4>
         <div class="team-role">Especialista em Capacitação</div>
@@ -489,6 +501,26 @@
         <div class="team-avail">Disponível agora</div>
       </div>
     </div>
+    
+    <div class="suporte-human-banner">
+      <div class="shb-photo">
+        <img src="./Assets/ImageSource/suporte-humano.png" alt="Equipe de suporte humanizado MarkSystte" loading="lazy">
+        <div class="shb-photo-overlay"></div>
+      </div>
+      <div class="shb-content">
+        <span class="shb-tag"><i class="fa-solid fa-headset"></i> Atendimento Real</span>
+        <h3>Pessoas reais.<br>Soluções reais.</h3>
+        <p>Nossa equipe é formada por especialistas que entendem o seu negócio e resolvem de verdade — sem scripts, sem filas, sem robôs.</p>
+        <div class="shb-checks">
+          <div class="shb-check"><i class="fa-solid fa-check"></i> Resposta em até 2 horas</div>
+          <div class="shb-check"><i class="fa-solid fa-check"></i> Suporte remoto e presencial</div>
+          <div class="shb-check"><i class="fa-solid fa-check"></i> Atendimento via WhatsApp</div>
+          <div class="shb-check"><i class="fa-solid fa-check"></i> Especialistas treinados</div>
+        </div>
+        <a href="https://wa.me/557991808054?text=Olá!%20Gostaria%20de%20falar%20com%20o%20suporte%20da%20MarkSystte" target="_blank" class="shb-cta"><i class="fa-brands fa-whatsapp"></i> Falar com a equipe agora</a>
+      </div>
+    </div>
+
 
     <div class="suporte-stats">
       <div class="sp-stat">
